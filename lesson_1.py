@@ -6,4 +6,4 @@ day = int(input("Введите день недели: "))
 if day in weekends:
     print("да")
 else:
-    print("да")
+    print("нет")
