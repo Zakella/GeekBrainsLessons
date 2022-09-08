@@ -10,13 +10,6 @@ for i in range(-n, n + 1):
 with open("index.txt", "r") as f:
     result = 1
     for line in f.readlines():
-        print(lst[int(line)])
-        result += result * lst[int(line)]
-        # for i in lst:
+        result = result * lst[int(line)]
 
-        # print(line, end="")
-#
-# for i in lst:
-#
 print(result)
-# print(lst)
