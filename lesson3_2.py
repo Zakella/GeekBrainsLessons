@@ -6,7 +6,6 @@
 # - [2, 3, 5, 6] => [12, 15]
 
 lst = [2, 3, 4, 5, 6]
-print(len(lst) / 2)
 result = []
 last_ind = -1
 
