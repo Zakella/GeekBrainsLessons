@@ -9,4 +9,4 @@ for i in some_list:
     if i not in unic_list:
         unic_list.append(i)
 
-print(unic_list)  # второй лист
+print(unic_list)  # второй способ
