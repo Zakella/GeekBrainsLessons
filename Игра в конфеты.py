@@ -20,6 +20,11 @@ dct = {
 
 bot_in_game = input('Вместо второго игрока подключить бота (y/n)?: ')
 bot_in_game = True if bot_in_game == "y" else False
+if bot_in_game and next_move == 2:
+    first_move = SWEETS % (MAX_MOVE + 1)
+else:
+    first_move = None
+
 print(f'Итого {SWEETS} конфеты. Начинаем игру!')
 
 while True:
@@ -31,7 +36,10 @@ while True:
         move_value = int(input('Игрок №1 ваш ход: '))
     else:
         if bot_in_game:
-            move_value = random.randint(1, MAX_MOVE)
+            if first_move != None:
+                move_value = first_move
+            else:
+                move_value = random.randint(1, MAX_MOVE)
             print(f'Бот сделал ход и забрал {move_value} конфет')
         else:
             move_value = int(input('Игрок №2 ваш ход: '))
