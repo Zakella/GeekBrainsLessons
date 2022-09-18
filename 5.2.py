@@ -8,8 +8,8 @@
 
 import random
 
-SWEETS = 20
-MAX_MOVE = 4
+SWEETS = 2021
+MAX_MOVE = 28
 
 next_move = random.randint(1, 2)
 dct = {
