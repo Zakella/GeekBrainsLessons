@@ -1,6 +1,4 @@
 # Создайте программу для игры в ""Крестики-нолики"".
-from numpy import unique
-
 
 def start_new_game():
     a = 3
