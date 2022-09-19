@@ -22,5 +22,8 @@ def rle_encode(data):
         encoding += str(count) + prev_char
         return encoding
 
-encoded_val = rle_encode('teeeeesttt')
-print(encoded_val)
+
+with open("input.txt", "r", encoding="utf-8") as inp:
+    with open("output.txt", "w", encoding="utf-8") as out:
+        for line in inp.readlines():
+            out.write(rle_encode(line))
