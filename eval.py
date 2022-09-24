@@ -45,7 +45,6 @@ def expression_result(lst, priorety):
 
 
 some_expression = input("Введите выражение: ").replace(" ", "")
-print(some_expression)
 first_priorety = ["*", "/"]
 second_priorety = ["+", "-"]
 lst = []
@@ -59,7 +58,6 @@ for ind, val in enumerate(some_expression):
         lst.append(val)
         skip = False
 
-print(lst)
 for index, val in enumerate(lst):
     if val == "(":
         i1 = index + 1
