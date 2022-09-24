@@ -45,6 +45,7 @@ def expression_result(lst, priorety):
 
 
 some_expression = input("Введите выражение: ").replace(" ", "")
+# some_expression = "10 + (0 + (15 + 20) *3)".replace(" ", "")
 first_priorety = ["*", "/"]
 second_priorety = ["+", "-"]
 lst = []
