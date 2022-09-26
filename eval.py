@@ -10,16 +10,16 @@
 
 def calculate(exp1, symbol, exp2):
     if symbol == '*':
-        return int(exp1) * int(exp2)
+        return float(exp1) * float(exp2)
 
     if symbol == '/':
-        return int(exp1) / int(exp2)
+        return float(exp1) / float(exp2)
 
     if symbol == '+':
-        return int(exp1) + int(exp2)
+        return float(exp1) + float(exp2)
 
     if symbol == '-':
-        return int(exp1) - int(exp2)
+        return float(exp1) - float(exp2)
 
 
 def split_numbers(string):
@@ -45,7 +45,6 @@ def expression_result(lst, priorety):
 
 
 some_expression = input("Введите выражение: ").replace(" ", "")
-# some_expression = "10 + (0 + (15 + 20) *3)".replace(" ", "")
 first_priorety = ["*", "/"]
 second_priorety = ["+", "-"]
 lst = []
@@ -59,13 +58,32 @@ for ind, val in enumerate(some_expression):
         lst.append(val)
         skip = False
 
-for index, val in enumerate(lst):
-    if val == "(":
-        i1 = index + 1
-        i2 = lst.index(")", i1)
-        lst[i2] = expression_result(expression_result(lst[i1:i2], first_priorety), second_priorety)[0]
-        for j in range(index, i2):
-            lst[j] = "#"
+
+inner_list = []
+star_count = -1
+used_indexes = []
+for i in range(0, len(lst)):
+    if lst[i] == "(":
+        end = lst.index(")", star_count)
+        if end not in used_indexes:
+            inner_list.append((i, end))
+            used_indexes.append(end)
+        else:
+            while True:
+                end = lst.index(")", star_count)
+                if end not in used_indexes:
+                    inner_list.append((i, end))
+                    used_indexes.append(end)
+                    break
+                star_count += -1
+
+
+for i in reversed(inner_list):
+    ind_start = i[0] + 1
+    ind_end = i[1]
+    lst[ind_end] = expression_result(expression_result(lst[ind_start: ind_end], first_priorety), second_priorety)[0]
+    for j in range(ind_start -1, ind_end):
+        lst[j] = "#"
 
 print(expression_result(expression_result([i for i in lst if not i == "#"], first_priorety), second_priorety)[0])
 print(eval(some_expression))
