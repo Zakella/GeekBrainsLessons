@@ -10,16 +10,16 @@
 
 def calculate(exp1, symbol, exp2):
     if symbol == '*':
-        return float(exp1) * float(exp2)
+        return int(exp1) * int(exp2)
 
     if symbol == '/':
-        return float(exp1) / float(exp2)
+        return int(exp1) / int(exp2)
 
     if symbol == '+':
-        return float(exp1) + float(exp2)
+        return int(exp1) + int(exp2)
 
     if symbol == '-':
-        return float(exp1) - float(exp2)
+        return int(exp1) - int(exp2)
 
 
 def split_numbers(string):
@@ -45,6 +45,8 @@ def expression_result(lst, priorety):
 
 
 some_expression = input("Введите выражение: ").replace(" ", "")
+# some_expression = "(1+2)*3".replace(" ", "")
+print(some_expression)
 first_priorety = ["*", "/"]
 second_priorety = ["+", "-"]
 lst = []
@@ -60,7 +62,7 @@ for ind, val in enumerate(some_expression):
 
 
 inner_list = []
-star_count = -1
+star_count = 0
 used_indexes = []
 for i in range(0, len(lst)):
     if lst[i] == "(":
