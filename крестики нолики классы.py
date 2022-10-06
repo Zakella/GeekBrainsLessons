@@ -4,6 +4,12 @@ class TicTacToeBoard:
         self.game_over = False
         self.next_move = True
 
+    def run(self):
+        self.make_move()
+        self.check_field()
+        self.get_field()
+
+
     def new_game(self):
         for i in range(0, 3):
             self.board.append(["-" for _ in range(0, 3)])
@@ -67,10 +73,9 @@ class TicTacToeBoard:
                 break
 
 
+
 board = TicTacToeBoard()
 board.new_game()
 board.get_field()
 while not board.game_over:
-    board.make_move()
-    board.check_field()
-    board.get_field()
+   board.run()
