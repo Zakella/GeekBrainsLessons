@@ -62,3 +62,4 @@ sm.create_map()
 sm.show_map()
 while not sm.game_over:
     pass
+
