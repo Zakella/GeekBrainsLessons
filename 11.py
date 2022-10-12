@@ -9,7 +9,7 @@ class Person:
         return self.numbers.get("private")
 
     def get_name(self):
-        return f' {self.lastname} {self.name} {self.midlename}'
+        return f' {self.lastname} {self.name} {self.middlename}'
 
     def get_work_phone(self):
         return self.numbers.get("work")
@@ -41,15 +41,24 @@ class Company:
         return self.company_name
 
     def sms_text(self):
-        pass
+        return f'Для компании {self.company_name} есть супер предложение! Примите участие в нашем беспроигршном конкурсе' \
+               f'для {self.c_type} '
 
 
-person1 = Person("Ivan", "Ivanonich", "Ivanov", {"private": "+787878787", "work": "+12148578"})
-person2 = Person("Petrov", "Petrovicn", "Petrov", {"private": "+458787877"})
-person3 = Person("Michail", "Amtonovich", "Sidorov", {"work": "+999778444"})
+def send_sms(*args):
+    for item in args:
+        phone = item.get_phone()
+        if phone:
+            print(f'Отправлено сообщение на номер {phone}')
+        else:
+            print(f'Не удалось отправить сообщение абоненту {item.get_name()}')
+
+
+person1 = Person("Ivan", "Ivanonich", "Ivanov", {"private": "123", "work": "456"})
+person2 = Person("Ivan", "Petrovicn", "Petrov", {"private": "789"})
+person3 = Person("Ivan", "Petrovicn", "Sidorov", {"work": "789"})
 person4 = Person("Jon", "Unknown", "Doe", {})
-company1 = Company("Bell", "OOO", {"contact": "+21445555"}, person3, person4)
-company1.get_phone()
-
+company1 = Company("Bell", "OOO", {"contact": "111"}, person3, person4)
 company2 = Company("Cell", "AO", {"non_contact": "222"}, person2, person3)
-company2.get_phone()
+company3 = Company("Dell", "LTD", {"non_contact": "333"}, person4)
+send_sms(person1, person2, person3, person4, company1, company2, company3)
